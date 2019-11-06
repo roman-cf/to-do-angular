@@ -8,11 +8,12 @@ import { TdTaskService } from "../shared/td-task.service";
 })
 export class TdTaskListComponent implements OnInit {
 	taskArray=[];
+  showDeletedMessage : boolean;
 
-  constructor(private taskService: TdTaskService) { }
+  constructor(private tdTaskService: TdTaskService) { }
 
   ngOnInit() {
-  	this.taskService.getTask().subscribe(
+  	this.tdTaskService.getTask().subscribe(
                  (list) => {
                          this.taskArray = list.map( (item) => {
                                 return {
@@ -22,5 +23,12 @@ export class TdTaskListComponent implements OnInit {
                         })
                  });
   }
+  onDelete($key){
+     if(confirm("Are you sure you want to delete this record?")){
+        this.tdTaskService.deleteTask($key);
+        this.showDeletedMessage = true;
+        setTimeout(()=>this.showDeletedMessage=false, 3000)
+       }
+   }
 
 }

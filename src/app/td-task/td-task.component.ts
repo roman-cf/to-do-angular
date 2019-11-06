@@ -28,7 +28,11 @@ onSubmit(){
             this.submitted = false;
             this.tdTaskService.form.reset();
          } else {
-                 //update
+            this.tdTaskService.updateTask(this.tdTaskService.form.value);
+            this.showSuccessMessage = true;
+            setTimeout(()=> this.showSuccessMessage=false, 3000);
+            this.submitted=false;
+            this.tdTaskService.form.reset();     //update
          }
     }     
  }

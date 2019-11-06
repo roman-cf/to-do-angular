@@ -9,9 +9,11 @@
                         <td>{{taskList.taskName}}</td>
                         <td>{{taskList.deadline}}</td>
                         <td>
-                                <button class="btn btn-info">Edit</button>
-                                <button class="btn btn-danger">Delete</button>
+                                <button class="btn btn-info" (click)="tdTaskService.populateForm(taskList)">✎</button>
+                                <button class="btn btn-danger" (click)="onDelete(taskList.$key)">X</button>
                         </td>
                 </tr>
         </ng-container>
 </table>
+
+<div class="alert alert-danger" *ngIf="showDeletedMessage" >Deleted successfully</div>

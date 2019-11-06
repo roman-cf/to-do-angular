@@ -14,15 +14,28 @@ export class TdTaskService {
 	    taskName: new FormControl('', Validators.required),
 	    deadline: new FormControl('', Validators.required),
 	         });
-	  	getTask(){
-	                 this.taskList = this.firebase.list('task');
-	                 return this.taskList.snapshotChanges();
-	         }
+getTask(){
+         this.taskList = this.firebase.list('task');
+         return this.taskList.snapshotChanges();
+ 	}
 
-		insertTask(task){
-	                 this.taskList.push({
-	                         taskName: task.taskName,
-	                         deadline: task.deadline
-	                  });
-	         }	
+insertTask(task){
+         this.taskList.push({
+                 taskName: task.taskName,
+                 deadline: task.deadline
+          });
+	}	
+populateForm(task){
+    this.form.setValue(task);
+  	}
+updateTask(task){
+    this.taskList.update(task.$key,{
+                 taskName: task.taskName,
+                 deadline: task.deadline
+    	});
+  	}  	
+deleteTask($key: string){
+    this.taskList.remove($key);
+  	}
+
 }

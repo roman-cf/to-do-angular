@@ -21,9 +21,9 @@ import { TdTaskService } from "./shared/td-task.service";
   imports: [
     BrowserModule,
     AppRoutingModule,
- 	ReactiveFormsModule,
-   AngularFireModule.initializeApp(environment.firebaseConfig),
-   AngularFireDatabaseModule
+ 	  ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [TdTaskService],
   bootstrap: [AppComponent]
