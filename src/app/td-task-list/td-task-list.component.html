@@ -1,0 +1,17 @@
+<table class="table table-sm">
+        <thead>
+                <th>Task</th>
+                <th>Deadline</th>
+                <th></th>
+        </thead>
+        <ng-container *ngFor="let taskList of taskArray">
+                <tr class="table-dark">
+                        <td>{{taskList.taskName}}</td>
+                        <td>{{taskList.deadline}}</td>
+                        <td>
+                                <button class="btn btn-info">Edit</button>
+                                <button class="btn btn-danger">Delete</button>
+                        </td>
+                </tr>
+        </ng-container>
+</table>
