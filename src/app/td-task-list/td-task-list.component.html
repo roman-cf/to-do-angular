@@ -1,3 +1,7 @@
+<form class="form-inline">
+        <input name="searchInput" class="form-control"  placeholder="Search" #searchInput="ngModel"  [(ngModel)]="searchText">
+        <button class="btn btn-outline-primary"  (click)="searchText=''">X</button>
+</form>
 <table class="table table-sm">
         <thead>
                 <th>Task</th>
@@ -5,7 +9,7 @@
                 <th></th>
         </thead>
         <ng-container *ngFor="let taskList of taskArray">
-                <tr class="table-dark">
+                <tr class="table-dark" *ngIf ="filterCondition(taskList)">
                         <td>{{taskList.taskName}}</td>
                         <td>{{taskList.deadline}}</td>
                         <td>
